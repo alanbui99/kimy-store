@@ -1,28 +1,15 @@
 import React from 'react'
-import CategoryItem from '../category-item/category-item.component'
+
+import {Row, Col} from 'reactstrap'
+
+import CategoryItem from './category-item'
+import {CATEGORIES} from '../data'
 
 class CategoryDirectory extends React.Component {
     constructor() {
         super()
         this.state = {
-            categories: [
-                {
-                    title: "women's footwear",
-                    id: 1,
-                },
-                {
-                    title: 'jewelry',
-                    id: 2,
-                },
-                {
-                    title: 'accessories',
-                    id: 3,
-                },
-                {
-                    title: "men's footwear",
-                    id: 4,
-                },
-            ]
+            categories: CATEGORIES
         }
     }
 
@@ -38,18 +25,18 @@ class CategoryDirectory extends React.Component {
                     <p className="small text-muted small text-uppercase mb-1">Carefully created collections</p>
                     <h2 className="h5 text-uppercase mb-4">Browse our categories</h2>
                 </header>
-                <div className="row">
-                    <div class="col-md-4 mb-4 mb-md-0">
+                <Row>
+                    <Col md="4">
                         <CategoryItem key={firstCat.id} title={firstCat.title}/>
-                    </div>
-                    <div class="col-md-4 mb-4 mb-md-0">
+                    </Col>
+                    <Col md="4">
                         <CategoryItem key={secondCat.id} title={secondCat.title}/>
                         <CategoryItem key={thirdCat.id} title={thirdCat.title}/>
-                    </div>
-                    <div class="col-md-4 mb-4 mb-md-0">
+                    </Col>
+                    <Col md="4">
                         <CategoryItem key={lastCat.id} title={lastCat.title}/>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
             </section>
         )
     }

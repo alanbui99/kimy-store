@@ -1,0 +1,1 @@
+export const themeColor = '#ff3f3f'
