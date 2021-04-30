@@ -36,9 +36,9 @@ button:focus, button:active {
 * ==========================================
 *
 */
-.navbar {
+/* .navbar {
   position: relative;
-}
+} */
 
 .navbar .dropdown-menu {
   border-top: 2px solid #ff3f3f;
@@ -71,9 +71,11 @@ button:focus, button:active {
   -webkit-transform: translateY(0.5rem);
   transform: translateY(0.5rem);
   transition: .2s ease all;
+  display: block;
+  position:absolute;
 }
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
   .navbar .dropdown-menu {
     display: block;
   }
@@ -82,8 +84,9 @@ button:focus, button:active {
 @media (max-width: 991.98px) {
   .navbar .dropdown-menu.always-animated {
     display: block;
+    position:absolute;
   }
-}
+} */
 
 .navbar .dropdown-menu.show {
   display: block;
@@ -1457,35 +1460,35 @@ STYLE SWITCHER FOR DEMO
 /*
  * 1. NAVBAR
  */
-.navbar {
+/* .navbar {
   padding: 0.5rem 1rem;
-}
+} */
 
-.navbar-brand {
+/* .navbar-brand {
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
   font-size: 1.25rem;
-}
+} */
 
-.navbar-toggler {
+/* .navbar-toggler {
   padding: 0.25rem 0.75rem;
   font-size: 1.25rem;
   line-height: 1;
   border: 1px solid transparent;
   border-radius: 0;
-}
+} */
 
-.navbar-light .navbar-brand {
+/* .navbar-light .navbar-brand {
   color: #ff3f3f;
-}
+} */
 
-.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+/* .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
   color: #ff3f3f;
-}
+} */
 
-.navbar-light .navbar-nav .nav-link {
+/* .navbar-light .navbar-nav .nav-link {
   color: rgba(17, 17, 17, 0.99);
   font-weight: 800;
   font-size: 0.95rem;
@@ -1505,20 +1508,20 @@ STYLE SWITCHER FOR DEMO
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .nav-link.active {
   color: #ff3f3f;
-}
+} */
 
-.navbar-light .navbar-toggler {
+/* .navbar-light .navbar-toggler {
   color: rgba(17, 17, 17, 0.99);
   border-color: rgba(17, 17, 17, 0.1);
-}
+} */
 
-.navbar-light .navbar-toggler-icon {
+/* .navbar-light .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(17, 17, 17, 0.99)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
+} */
 
-.navbar-light .navbar-text {
+/* .navbar-light .navbar-text {
   color: rgba(17, 17, 17, 0.99);
-}
+} */
 
 .navbar-dark .navbar-brand {
   color: #fff;
