@@ -69,6 +69,9 @@ const getListItemStyles = (props) => {
 
 export const ProductOverlayListItem = styled.li`
     transition: all 0.3s;
+    & button {
+        border-radius: 0px;
+    }
     ${ProductContainer}:hover & {
         opacity: 1;
         -webkit-transform: none;

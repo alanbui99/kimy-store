@@ -26,8 +26,8 @@ class TrendingDirectory extends React.Component {
                 <Row>
                     {this.state.data.map(category => (
                         category.items.map( item => (
-                            <Col sm="6" lg="4" xl="3">
-                                <Product key={item.id} name={item.name} imageUrl={item.imageUrl} price={item.price} />
+                            <Col key={item.id} sm="6" lg="4" xl="3">
+                                <Product name={item.name} imageUrl={item.imageUrl} price={item.price} />
                             </Col>
                         ))
                     ))}

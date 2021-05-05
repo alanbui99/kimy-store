@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Container,
@@ -15,15 +15,20 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-import LoginModal from "./login-modal"
+import LoginModal from "./login-modal";
 import { NavbarWrapper } from "../styled-components/navbar";
 
+import { auth } from "../config/firebase";
 import { CATEGORIES } from "../data";
 
-const Header = (props) => {
+const Header = ({ currentUser }) => {
   const [categories, setCategories] = useState(CATEGORIES);
   const [isOpen, setIsOpen] = useState(false);
-  
+
+  // useEffect(() => {
+  //   console.log(currentUser)
+  // }, [currentUser])
+
   const toggleNavbar = () => setIsOpen(!isOpen);
 
   return (
@@ -47,7 +52,9 @@ const Header = (props) => {
             <Collapse isOpen={isOpen} navbar>
               <Nav navbar className="mr-auto">
                 <NavItem>
-                  <NavLink tag={Link} to="/">Home</NavLink>
+                  <NavLink tag={Link} to="/">
+                    Home
+                  </NavLink>
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
@@ -76,13 +83,24 @@ const Header = (props) => {
                     <small className="text-gray">(0)</small>
                   </NavLink>
                 </NavItem>
-                <LoginModal />
+                {currentUser ? (
+                  <NavItem>
+                    <NavLink
+                      style={{ cursor: "pointer" }}
+                      onClick={ () => auth.signOut() }
+                    >
+                      <i className="fas fa-user-alt mr-1 text-gray"></i>
+                      Logout
+                    </NavLink>
+                  </NavItem>
+                ) : (
+                  <LoginModal />
+                )}
               </Nav>
             </Collapse>
           </Navbar>
         </NavbarWrapper>
       </Container>
-
     </header>
   );
 };

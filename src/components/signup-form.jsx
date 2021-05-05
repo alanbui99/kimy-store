@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-import { auth } from "../config/firebase";
+import { auth, createUserProfileDoc } from "../config/firebase";
 import SocialLogin from "./social-login";
 
-const LoginForm = (props) => {
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
+const SignupForm = (props) => {
+  const [credentials, setCredentials] = useState({displayName: '', email: '', password: ''});
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const {email, password} = credentials;
+    const {displayName, email, password} = credentials;
     try {
+      const {user} = await auth.createUserWithEmailAndPassword(email, password);
+      await createUserProfileDoc(user, {displayName});
+      setCredentials({displayName: '', email: '', password: ''});
       await auth.signInWithEmailAndPassword(email, password);
-      setCredentials({ email: "", password: "" });  
     } catch (err) {
       console.error(err);
     }
@@ -26,8 +29,18 @@ const LoginForm = (props) => {
 
   return (
     <div>
-      <h4 className="text-center mb-4">Welcome Back!</h4>
+      <h4 className="text-center mb-4">Welcome to Kimystore!</h4>
       <Form onSubmit={handleSubmit}>
+        <FormGroup>
+          <Input
+            type="text"
+            name="displayName"
+            placeholder="Name"
+            onChange={handleChange}
+            value={credentials.displayName}
+            required
+          />
+        </FormGroup>
         <FormGroup>
           <Input
             type="email"
@@ -53,20 +66,17 @@ const LoginForm = (props) => {
           <Label check>Remember Me</Label>
         </FormGroup>
         <Button type="submit" color="dark" block={true}>
-          Login
+          Sign up
         </Button>
       </Form>
-      <p class="text-center my-2 small">
-        <Link to="/">Forgot your password?</Link>
-      </p>
-      <p className="text-center">OR</p>
+      <p className="text-center my-2">OR</p>
       <SocialLogin />
       <p class="text-center my-2 small">
-        <span className="mr-1">Don't have an account?</span>
-        <Link to="/signup">Sign up</Link>
+        <span className="mr-1">Already have an account?</span>
+        <Link to="/login">Log in</Link>
       </p>
     </div>
   );
 };
 
-export default LoginForm;
+export default SignupForm;

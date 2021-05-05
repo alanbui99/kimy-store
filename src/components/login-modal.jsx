@@ -15,7 +15,7 @@ const LoginModal = (props) => {
         Login
       </NavLink>
 
-      <Modal isOpen={modal} toggle={toggleModal} external={true}>
+      <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal} className="border-0 pb-0"></ModalHeader>
         <ModalBody className="px-5 pt-0">
             <img className="d-block mx-auto mb-3" src="icons/icons8-waving-hand-emoji-48.png" height={64} />
